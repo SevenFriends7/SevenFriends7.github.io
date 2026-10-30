@@ -3,14 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SevenFriends | Embedded Systems & Linux Engineer</title>
-  <meta name="description" content="Personal portfolio and project showcase of SevenFriends - Embedded Linux, ARM Architecture, Yocto, Edge AI and Developer Tools.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2226%22>⚡</text></svg>">
+  <title>SevenFriends — 个人主页与技术记录</title>
+  <meta name="description" content="SevenFriends 的个人主页与技术记录，专注于嵌入式系统、Linux 底层开发与开源工具。">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>">
 
-  <!-- Google Fonts & Tailwind CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,441 +15,390 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            dark: {
-              bg: '#0A0F1D',
-              card: '#111827',
-              border: '#1F2937',
-              hover: '#1E293B',
-              muted: '#94A3B8'
-            },
-            accent: {
-              cyan: '#06B6D4',
-              blue: '#3B82F6',
-              emerald: '#10B981',
-              purple: '#8B5CF6'
-            }
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Noto Sans SC"', '"PingFang SC"', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
           }
         }
       }
     }
   </script>
+
   <style>
-    body {
-      background-color: #0A0F1D;
-      color: #E2E8F0;
-      background-image: 
-        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.08) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.08) 0px, transparent 50%);
-      background-attachment: fixed;
+    /* Notion-like typography & subtle scrollbars */
+    ::selection {
+      background: #e0e7ff;
+      color: #1e1b4b;
     }
-    .glass-card {
-      background: rgba(17, 24, 39, 0.7);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+    .dark ::selection {
+      background: #312e81;
+      color: #e0e7ff;
     }
-    .glass-card:hover {
-      border-color: rgba(59, 130, 246, 0.3);
-      box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15);
+    a.hover-underline {
+      text-decoration: underline;
+      text-decoration-color: rgba(156, 163, 175, 0.4);
+      text-underline-offset: 4px;
+      transition: text-decoration-color 0.2s, color 0.2s;
     }
-    .glow-cyan {
-      text-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+    a.hover-underline:hover {
+      text-decoration-color: currentColor;
     }
   </style>
 </head>
-<body class="font-sans antialiased min-h-screen flex flex-col selection:bg-cyan-500/30 selection:text-cyan-300">
+<body class="bg-white dark:bg-[#191919] text-[#37352f] dark:text-[#d4d4d4] transition-colors duration-200 antialiased min-h-screen">
 
-  <!-- Navigation Bar -->
-  <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-gray-800/80 bg-gray-900/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-mono font-bold text-white shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-          SF
-        </div>
-        <span class="font-semibold text-lg tracking-tight group-hover:text-cyan-400 transition-colors">SevenFriends</span>
-      </a>
+  <div class="max-w-3xl mx-auto px-6 sm:px-8 py-12 md:py-20">
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-gray-300">
-        <a href="#about" class="hover:text-cyan-400 transition-colors">关于</a>
-        <a href="#projects" class="hover:text-cyan-400 transition-colors">精选项目</a>
-        <a href="#skills" class="hover:text-cyan-400 transition-colors">技术栈</a>
-        <a href="#blog" class="hover:text-cyan-400 transition-colors">博客动态</a>
+    <!-- Top Action Bar (Breadcrumb + Theme Toggle + Blog Link) -->
+    <header class="flex items-center justify-between text-xs text-zinc-500 dark:text-zinc-400 mb-12 pb-3 border-b border-zinc-100 dark:border-zinc-800">
+      <div class="flex items-center gap-2 font-mono">
+        <span class="text-zinc-400 dark:text-zinc-500">~</span>
+        <span>/</span>
+        <span class="text-zinc-800 dark:text-zinc-200 font-medium">SevenFriends</span>
+        <span>/</span>
+        <span>workspace</span>
+      </div>
+
+      <div class="flex items-center gap-5">
         <a href="https://sevenfriends.xtkx.site/" target="_blank" rel="noopener noreferrer" 
-           class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500/20 transition-all text-xs font-mono">
-          <span>访问独立博客</span>
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-      </nav>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-400 hover:text-white focus:outline-none" aria-label="Toggle Menu">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-      </button>
-    </div>
-
-    <!-- Mobile Menu dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2 border-t border-gray-800 bg-gray-950/95">
-      <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-800">关于</a>
-      <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-800">精选项目</a>
-      <a href="#skills" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-800">技术栈</a>
-      <a href="#blog" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-gray-800">博客动态</a>
-      <a href="https://sevenfriends.xtkx.site/" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-cyan-400 hover:bg-cyan-500/10">访问独立博客 ↗</a>
-    </div>
-  </header>
-
-  <main class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full">
-
-    <!-- Hero Section -->
-    <section id="home" class="py-12 md:py-20 flex flex-col items-start gap-6">
-      <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-800/60 text-xs font-mono text-cyan-300">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>聚焦嵌入式系统与软硬件协同开发</span>
-      </div>
-
-      <div class="space-y-4 max-w-3xl">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-          Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 glow-cyan">SevenFriends</span>.
-        </h1>
-        <p class="text-lg sm:text-xl text-gray-300 leading-relaxed font-light">
-          嵌入式系统 / Linux 开发工程师。热衷于在软硬件边界构建高可靠系统，专注于 <span class="text-cyan-300 font-normal">多核异构架构</span>、<span class="text-cyan-300 font-normal">Yocto 定制</span>、<span class="text-cyan-300 font-normal">多传感器融合与边缘计算</span>。
-        </p>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-4 pt-2">
-        <a href="#projects" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium hover:shadow-lg hover:shadow-cyan-500/25 hover:opacity-95 transition-all text-sm flex items-center gap-2">
-          <span>查看精选项目</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+           class="hover:text-zinc-900 dark:hover:text-zinc-100 flex items-center gap-1 transition-colors">
+          <span>技术博客</span>
+          <span class="text-[10px]">↗</span>
         </a>
         <a href="https://github.com/SevenFriends7" target="_blank" rel="noopener noreferrer" 
-           class="px-6 py-3 rounded-xl glass-card text-gray-200 font-medium hover:bg-gray-800 transition-all text-sm flex items-center gap-2 border border-gray-700">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          <span>GitHub 仓库</span>
+           class="hover:text-zinc-900 dark:hover:text-zinc-100 flex items-center gap-1 transition-colors">
+          <span>GitHub</span>
+          <span class="text-[10px]">↗</span>
         </a>
+        <button id="theme-toggle" class="p-1 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors" title="切换深色/浅色模式" aria-label="Toggle Theme">
+          <svg id="theme-icon-dark" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="theme-icon-light" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
       </div>
-    </section>
+    </header>
 
-    <!-- About Section -->
-    <section id="about" class="py-12 border-t border-gray-800/60">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="md:col-span-1">
-          <h2 class="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-2"># About Me</h2>
-          <h3 class="text-2xl font-bold text-white">关于我与技术追求</h3>
-        </div>
-        <div class="md:col-span-2 space-y-4 text-gray-300 leading-relaxed font-light">
-          <p>
-            专注于嵌入式软硬件开发，具备底层 Bootloader、Linux 内核驱动裁剪、多核异构通信（如 Cortex-A55 与 Cortex-M33 总线互联与冲突调优）以及上层边缘算法部署的完整技术链条。
-          </p>
-          <p>
-            善于利用工程化思维解决系统级瓶颈：从跨海大桥巡检 ROV 的异构计算架构，到多传感器（UWB + ArUco）相对定位建模；同时兼顾开发工具链体验，打造了深受科研人员喜爱的学术论文阅读扩展。
-          </p>
-        </div>
-      </div>
-    </section>
+    <!-- Page Title & Icon -->
+    <div class="space-y-4 mb-8">
+      <div class="text-3xl text-zinc-400 dark:text-zinc-500 select-none">✦</div>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+        SevenFriends
+      </h1>
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 font-mono">
+        Embedded Systems Engineer · Linux / ARM / Edge AI · Open Source
+      </p>
+    </div>
 
-    <!-- Featured Projects Section -->
-    <section id="projects" class="py-12 border-t border-gray-800/60">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-1"># Showcase</h2>
-          <h3 class="text-2xl sm:text-3xl font-bold text-white">精选开源与工程项目</h3>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Project 1: Academic PDF Reader -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-2xl">📑</span>
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-cyan-950 text-cyan-400 border border-cyan-800/50">VS Code Extension</span>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-2">
-              Academic PDF Reader
-            </h4>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-              专为学术论文打造的 VS Code 阅读扩展：中英文左右分栏对照排版、公式与原图精准保留、划词即时翻译与大模型 AI 辅助答疑，极大提升文献研读效率。
-            </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">TypeScript</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">VS Code API</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">PDF.js</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">AI Integration</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-4 text-xs font-mono">
-            <a href="https://github.com/SevenFriends7/academic-pdf-reader" target="_blank" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1">
-              <span>源码仓库</span> ↗
-            </a>
-            <a href="https://sevenfriends.xtkx.site/2026/10/29/vscode-academic-pdf-reader/" target="_blank" class="text-gray-400 hover:text-gray-200">
-              详细博文 ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 2: RZ/V2H & Yocto ROV System -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-2xl">🚢</span>
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-blue-950 text-blue-400 border border-blue-800/50">Embedded Systems</span>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors mb-2">
-              智能巡检 ROV 多核异构计算平台
-            </h4>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-              基于瑞萨 RZ/V2H SoC 与定制 Yocto Linux 发行版，协调 CA55（Linux 系统与外设）和 CM33（实时姿态控制与传感器采集），实现跨海大桥水下智能巡检。
-            </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">Yocto Project</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">ARM Cortex-A55/M33</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">Linux Drivers</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">Edge AI</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-4 text-xs font-mono">
-            <a href="https://sevenfriends.xtkx.site/2026/09/19/516/" target="_blank" class="text-blue-400 hover:text-blue-300 flex items-center gap-1">
-              <span>项目结项总结</span> ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 3: UWB + ArUco Fusion -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-2xl">📡</span>
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-purple-950 text-purple-400 border border-purple-800/50">Algorithm & Modeling</span>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-2">
-              多传感器相对定位观测建模与优化
-            </h4>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-              针对非结构化复杂场景，构建 UWB 测距与视觉 ArUco 标记的 4-DoF 滑动窗口位姿融合估计算法，有效抑制累计漂移与遮挡跳变。
-            </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">State Estimation</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">Nonlinear Optimization</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">OpenCV</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-4 text-xs font-mono">
-            <a href="https://sevenfriends.xtkx.site/2026/10/27/uwb-aruco-4dof-sliding-window-fusion/" target="_blank" class="text-purple-400 hover:text-purple-300 flex items-center gap-1">
-              <span>算法原理解析</span> ↗
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 4: NV UEFI Unlocker & Firmware Tools -->
-        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 group">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-2xl">⚙️</span>
-              <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-emerald-950 text-emerald-400 border border-emerald-800/50">Firmware & Low-level</span>
-            </div>
-            <h4 class="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors mb-2">
-              UEFI 固件与底层系统工具
-            </h4>
-            <p class="text-gray-400 text-sm leading-relaxed mb-4">
-              底层固件协议解析、硬件寄存器调试与嵌入式启动链路分析工具，深入硬件底层的控制与安全性探索。
-            </p>
-            <div class="flex flex-wrap gap-2 mb-6">
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">C / Assembly</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">UEFI / BIOS</span>
-              <span class="px-2 py-0.5 rounded text-xs font-mono bg-gray-800 text-gray-300">Firmware</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-4 text-xs font-mono">
-            <span class="text-gray-400">底层系统探索</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tech Stack Section -->
-    <section id="skills" class="py-12 border-t border-gray-800/60">
-      <h2 class="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-1"># Skills</h2>
-      <h3 class="text-2xl font-bold text-white mb-8">技术雷达与工具链</h3>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="glass-card rounded-xl p-5">
-          <div class="text-cyan-400 font-mono text-xs uppercase font-semibold mb-3">语言 & 基础</div>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>C / Modern C++</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Python & NumPy</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>Bash / Shell Scripting</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>TypeScript / Node.js</li>
-          </ul>
-        </div>
-
-        <div class="glass-card rounded-xl p-5">
-          <div class="text-blue-400 font-mono text-xs uppercase font-semibold mb-3">系统 & 架构</div>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Embedded Linux</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>ARM Cortex-A / Cortex-M</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>Yocto / BitBake</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>多核异构总线通信 (IPC)</li>
-          </ul>
-        </div>
-
-        <div class="glass-card rounded-xl p-5">
-          <div class="text-emerald-400 font-mono text-xs uppercase font-semibold mb-3">硬件外设与总线</div>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>MIPI-CSI 摄像头调试</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>I2C / SPI / UART / CAN</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>瑞萨 RZ 系列 / STM32</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>示波器 / 逻辑分析仪</li>
-          </ul>
-        </div>
-
-        <div class="glass-card rounded-xl p-5">
-          <div class="text-purple-400 font-mono text-xs uppercase font-semibold mb-3">开发工具与边缘AI</div>
-          <ul class="space-y-2 text-sm text-gray-300">
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>VS Code 扩展开发</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>YOLOv8 边缘推理部署</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Git 协同与 CI/CD 自动化</li>
-            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>Docker 容器化交叉编译</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Blog Posts Section (Live Fetching WordPress REST API) -->
-    <section id="blog" class="py-12 border-t border-gray-800/60">
-      <div class="flex items-center justify-between mb-8">
-        <div>
-          <h2 class="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-1"># Writing & Thoughts</h2>
-          <h3 class="text-2xl sm:text-3xl font-bold text-white">最新博客动态</h3>
-        </div>
-        <a href="https://sevenfriends.xtkx.site/" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-mono text-cyan-400 hover:text-cyan-300">
-          <span>全部 20+ 篇技术文章</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-        </a>
-      </div>
-
-      <!-- Posts Container (Auto-populated via JS, with static fallback) -->
-      <div id="posts-container" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <a href="https://sevenfriends.xtkx.site/2026/10/29/vscode-academic-pdf-reader/" target="_blank" class="glass-card rounded-xl p-5 flex flex-col justify-between hover:scale-[1.01] transition-transform">
-          <div>
-            <div class="text-xs font-mono text-cyan-400 mb-2">2026-10-29</div>
-            <h4 class="text-base font-semibold text-white hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
-              我把论文阅读器做进了 VS Code：中英对照、公式原图、AI 答疑
-            </h4>
-            <p class="text-xs text-gray-400 line-clamp-3">
-              打造极致的科研文献研读体验，实现分栏布局、双语精准对应以及无干扰的沉浸式交互。
-            </p>
-          </div>
-          <div class="mt-4 text-xs font-mono text-cyan-400 flex items-center gap-1">阅读全文 ↗</div>
-        </a>
-
-        <!-- Card 2 -->
-        <a href="https://sevenfriends.xtkx.site/2026/10/27/uwb-aruco-4dof-sliding-window-fusion/" target="_blank" class="glass-card rounded-xl p-5 flex flex-col justify-between hover:scale-[1.01] transition-transform">
-          <div>
-            <div class="text-xs font-mono text-cyan-400 mb-2">2026-10-27</div>
-            <h4 class="text-base font-semibold text-white hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
-              多传感器相对定位的观测建模与优化方法
-            </h4>
-            <p class="text-xs text-gray-400 line-clamp-3">
-              详细剖析 UWB 测距与视觉标记联合观测模型的构建过程，利用滑动窗口优化实现稳健位姿估计。
-            </p>
-          </div>
-          <div class="mt-4 text-xs font-mono text-cyan-400 flex items-center gap-1">阅读全文 ↗</div>
-        </a>
-
-        <!-- Card 3 -->
-        <a href="https://sevenfriends.xtkx.site/2026/09/19/516/" target="_blank" class="glass-card rounded-xl p-5 flex flex-col justify-between hover:scale-[1.01] transition-transform">
-          <div>
-            <div class="text-xs font-mono text-cyan-400 mb-2">2026-09-19</div>
-            <h4 class="text-base font-semibold text-white hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
-              基于 Yocto 与瑞萨 RZ/V2H 多核异构的跨海大桥智能巡检 ROV 全景结项总结
-            </h4>
-            <p class="text-xs text-gray-400 line-clamp-3">
-              从 BSP 移植、多核核间通信配置到硬件联调与工程结项的全景技术梳理与实战复盘。
-            </p>
-          </div>
-          <div class="mt-4 text-xs font-mono text-cyan-400 flex items-center gap-1">阅读全文 ↗</div>
-        </a>
-      </div>
-
-      <div class="mt-8 text-center sm:hidden">
-        <a href="https://sevenfriends.xtkx.site/" target="_blank" class="inline-flex items-center gap-2 text-sm font-mono text-cyan-400">
-          <span>访问完整技术博客 (20+ 篇)</span> ↗
-        </a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="glass-card border-t border-gray-800/80 py-8 mt-auto">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400 font-mono">
+    <!-- Notion-style Callout Box -->
+    <div class="bg-zinc-50 dark:bg-[#202020] border border-zinc-200/80 dark:border-zinc-800 rounded-lg p-4 mb-10 text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed flex gap-3">
+      <div class="text-zinc-400 select-none text-base">💡</div>
       <div>
-        © 2026 SevenFriends. All rights reserved.
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="https://github.com/SevenFriends7" target="_blank" class="hover:text-cyan-400 transition-colors">GitHub</a>
-        <a href="https://sevenfriends.xtkx.site/" target="_blank" class="hover:text-cyan-400 transition-colors">Personal Blog</a>
-        <a href="https://github.com/SevenFriends7/SevenFriends7.github.io" target="_blank" class="hover:text-cyan-400 transition-colors">Site Source</a>
+        专注于底层软硬件协同、嵌入式 Linux 系统定制与高可靠算法工程实现。这里整理了我的开源项目、工程总结与博客文章索引。
       </div>
     </div>
-  </footer>
 
-  <!-- Script for Mobile Menu and Dynamic Blog Fetching -->
+    <!-- Quick Table of Contents -->
+    <nav class="flex flex-wrap gap-2 text-xs font-mono text-zinc-500 dark:text-zinc-400 mb-12">
+      <a href="#about" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">1. 关于</a>
+      <a href="#projects" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">2. 开源项目</a>
+      <a href="#posts" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">3. 最新文章</a>
+      <a href="#skills" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">4. 技术能力</a>
+      <a href="#contact" class="px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800/80 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors">5. 链接</a>
+    </nav>
+
+    <!-- Section 1: About -->
+    <section id="about" class="mb-14">
+      <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <span>关于</span>
+        <span class="text-xs font-mono text-zinc-400 font-normal">01</span>
+      </h2>
+      <div class="space-y-3 text-sm text-zinc-600 dark:text-zinc-300 leading-relaxed">
+        <p>
+          主要从事嵌入式系统的软硬件协同设计与底层开发，涵盖从底层 Bootloader、内核与驱动适配，到多核异构处理器总线通信架构与边缘智能算法落地。
+        </p>
+        <p>
+          在工程中推崇简洁、克制且可维护的架构设计；工作之余喜欢为自己和开发者社区编写轻巧好用的效率工具，并在个人独立博客持续复盘技术细节。
+        </p>
+      </div>
+    </section>
+
+    <!-- Section 2: Projects (Notion Database List View) -->
+    <section id="projects" class="mb-14">
+      <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <span>精选项目</span>
+        <span class="text-xs font-mono text-zinc-400 font-normal">02</span>
+      </h2>
+
+      <div class="divide-y divide-zinc-100 dark:divide-zinc-800/80">
+        <!-- Project Item 1 -->
+        <article class="py-4 space-y-2">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              <a href="https://github.com/SevenFriends7/academic-pdf-reader" target="_blank" rel="noopener noreferrer" class="hover-underline">
+                Academic PDF Reader
+              </a>
+            </h3>
+            <div class="flex items-center gap-3 text-xs font-mono text-zinc-400 shrink-0">
+              <a href="https://github.com/SevenFriends7/academic-pdf-reader" target="_blank" class="hover:text-zinc-900 dark:hover:text-zinc-200">GitHub ↗</a>
+              <a href="https://sevenfriends.xtkx.site/2026/10/29/vscode-academic-pdf-reader/" target="_blank" class="hover:text-zinc-900 dark:hover:text-zinc-200">文章 ↗</a>
+            </div>
+          </div>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            给学术论文用的 VS Code 阅读插件：左右对照排版、划词即译、公式原图保留、划线高亮与便签批注，配合 AI 模型辅助研读。
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">TypeScript</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">VS Code API</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">PDF.js</span>
+          </div>
+        </article>
+
+        <!-- Project Item 2 -->
+        <article class="py-4 space-y-2">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              <a href="https://sevenfriends.xtkx.site/2026/09/19/516/" target="_blank" rel="noopener noreferrer" class="hover-underline">
+                跨海大桥智能巡检 ROV 多核异构系统
+              </a>
+            </h3>
+            <div class="flex items-center gap-3 text-xs font-mono text-zinc-400 shrink-0">
+              <a href="https://sevenfriends.xtkx.site/2026/09/19/516/" target="_blank" class="hover:text-zinc-900 dark:hover:text-zinc-200">结项复盘 ↗</a>
+            </div>
+          </div>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            基于瑞萨 RZ/V2H SoC 构建的多核架构。CA55 运行 Linux 负责任务调度与 AI 推理，CM33 实时内核负责水下电机闭环姿态控制与传感器低延迟采集。
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">Yocto Project</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">ARM Cortex-A55/M33</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">IPC 异构通信</span>
+          </div>
+        </article>
+
+        <!-- Project Item 3 -->
+        <article class="py-4 space-y-2">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              <a href="https://sevenfriends.xtkx.site/2026/10/27/uwb-aruco-4dof-sliding-window-fusion/" target="_blank" rel="noopener noreferrer" class="hover-underline">
+                多传感器相对定位观测建模与优化
+              </a>
+            </h3>
+            <div class="flex items-center gap-3 text-xs font-mono text-zinc-400 shrink-0">
+              <a href="https://sevenfriends.xtkx.site/2026/10/27/uwb-aruco-4dof-sliding-window-fusion/" target="_blank" class="hover:text-zinc-900 dark:hover:text-zinc-200">建模详解 ↗</a>
+            </div>
+          </div>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            针对近距离相对导航场景，建立 UWB 测距与 ArUco 视觉位姿的 4-DoF 滑动窗口非线性融合优化算法，解决单传感器遮挡与漂移问题。
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">C++</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">滑动窗口优化</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">位姿估计</span>
+          </div>
+        </article>
+
+        <!-- Project Item 4 -->
+        <article class="py-4 space-y-2">
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+              <a href="https://github.com/SevenFriends7" target="_blank" rel="noopener noreferrer" class="hover-underline">
+                固件与底层系统调试工具集
+              </a>
+            </h3>
+            <div class="flex items-center gap-3 text-xs font-mono text-zinc-400 shrink-0">
+              <span class="text-zinc-400">开源探索</span>
+            </div>
+          </div>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
+            涵盖 UEFI 固件环境解析、ARM 总线访问冲突分析脚本以及嵌入式 Linux 驱动调试工具。
+          </p>
+          <div class="flex flex-wrap gap-1.5 pt-1 text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">C / Assembly</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">UEFI</span>
+            <span class="px-1.5 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800">Linux Drivers</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 3: Recent Writing (Notion List View with Live API Sync) -->
+    <section id="posts" class="mb-14">
+      <div class="flex items-baseline justify-between mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800">
+        <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
+          <span>技术博文</span>
+          <span class="text-xs font-mono text-zinc-400 font-normal">03</span>
+        </h2>
+        <a href="https://sevenfriends.xtkx.site/" target="_blank" rel="noopener noreferrer" 
+           class="text-xs font-mono text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+          全部文章 ↗
+        </a>
+      </div>
+
+      <div id="posts-list" class="space-y-2 font-mono text-xs">
+        <!-- Static pre-rendered entries for instant load -->
+        <div class="flex items-baseline justify-between py-1.5 group">
+          <a href="https://sevenfriends.xtkx.site/2026/10/29/vscode-academic-pdf-reader/" target="_blank" class="font-sans text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 truncate pr-4">
+            我把论文阅读器做进了 VS Code：中英对照、公式原图、AI 答疑
+          </a>
+          <span class="text-zinc-400 shrink-0">2026-10-29</span>
+        </div>
+
+        <div class="flex items-baseline justify-between py-1.5 group">
+          <a href="https://sevenfriends.xtkx.site/2026/10/27/uwb-aruco-4dof-sliding-window-fusion/" target="_blank" class="font-sans text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 truncate pr-4">
+            多传感器相对定位的观测建模与优化方法
+          </a>
+          <span class="text-zinc-400 shrink-0">2026-10-27</span>
+        </div>
+
+        <div class="flex items-baseline justify-between py-1.5 group">
+          <a href="https://sevenfriends.xtkx.site/2026/09/19/516/" target="_blank" class="font-sans text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 truncate pr-4">
+            基于 Yocto 与瑞萨 RZ/V2H 多核异构的跨海大桥智能巡检 ROV 全景结项总结
+          </a>
+          <span class="text-zinc-400 shrink-0">2026-09-19</span>
+        </div>
+
+        <div class="flex items-baseline justify-between py-1.5 group">
+          <a href="https://sevenfriends.xtkx.site/2026/05/25/%e5%85%b3%e4%ba%8emipi%e6%91%84%e5%83%8f%e5%a4%b4%e7%9a%84%e9%97%ae%e9%a2%98/" target="_blank" class="font-sans text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 truncate pr-4">
+            关于 MIPI 摄像头与视频流调试的若干问题
+          </a>
+          <span class="text-zinc-400 shrink-0">2026-05-25</span>
+        </div>
+
+        <div class="flex items-baseline justify-between py-1.5 group">
+          <a href="https://sevenfriends.xtkx.site/2026/04/27/%e5%85%b3%e4%ba%8eca55%e4%b8%8ecm33%e6%80%bb%e7%ba%bf%e8%ae%bf%e9%97%ae%e5%86%b2%e7%aa%81%e7%9a%84%e9%97%ae%e9%a2%98/" target="_blank" class="font-sans text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 truncate pr-4">
+            关于 CA55 与 CM33 总线并发访问冲突的问题复盘
+          </a>
+          <span class="text-zinc-400 shrink-0">2026-04-27</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Technical Skills / Stack -->
+    <section id="skills" class="mb-14">
+      <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <span>技术栈</span>
+        <span class="text-xs font-mono text-zinc-400 font-normal">04</span>
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-xs leading-relaxed">
+        <div>
+          <div class="font-mono text-zinc-400 uppercase tracking-wider mb-1.5">Systems & Architecture</div>
+          <p class="text-zinc-600 dark:text-zinc-300">
+            Embedded Linux · Yocto Project · ARM Cortex-A/M 异构架构 · 内核驱动裁剪 · 进程间通信 (IPC)
+          </p>
+        </div>
+
+        <div>
+          <div class="font-mono text-zinc-400 uppercase tracking-wider mb-1.5">Languages & Tools</div>
+          <p class="text-zinc-600 dark:text-zinc-300">
+            C · C++17 · Python · Bash Shell · TypeScript · Git · Docker · CMake
+          </p>
+        </div>
+
+        <div>
+          <div class="font-mono text-zinc-400 uppercase tracking-wider mb-1.5">Hardware & Interfaces</div>
+          <p class="text-zinc-600 dark:text-zinc-300">
+            Renesas RZ 系列 · STM32 · MIPI-CSI · I2C / SPI / UART / CAN 协议调试与分析
+          </p>
+        </div>
+
+        <div>
+          <div class="font-mono text-zinc-400 uppercase tracking-wider mb-1.5">Edge AI & Applications</div>
+          <p class="text-zinc-600 dark:text-zinc-300">
+            YOLOv8 边缘推理 · 4-DoF 滑动窗口位姿估计 · VS Code 插件生态开发
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5: Contact & Links -->
+    <section id="contact" class="mb-14">
+      <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4 pb-2 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+        <span>链接与交流</span>
+        <span class="text-xs font-mono text-zinc-400 font-normal">05</span>
+      </h2>
+
+      <ul class="space-y-2 text-xs font-mono text-zinc-600 dark:text-zinc-400">
+        <li>
+          <span class="text-zinc-400">Blog:</span>
+          <a href="https://sevenfriends.xtkx.site/" target="_blank" class="hover-underline text-zinc-800 dark:text-zinc-200 ml-2">https://sevenfriends.xtkx.site/</a>
+        </li>
+        <li>
+          <span class="text-zinc-400">GitHub:</span>
+          <a href="https://github.com/SevenFriends7" target="_blank" class="hover-underline text-zinc-800 dark:text-zinc-200 ml-2">https://github.com/SevenFriends7</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-8 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400 font-mono">
+      <div>© 2026 SevenFriends</div>
+      <div class="text-[11px]">Crafted with clarity · Built on GitHub Pages</div>
+    </footer>
+
+  </div>
+
+  <!-- Theme Toggle & Dynamic Post Fetching Script -->
   <script>
-    // Mobile navigation toggle
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+    // Theme Management (Supports LocalStorage + OS Preference)
+    const toggleBtn = document.getElementById('theme-toggle');
+    const iconDark = document.getElementById('theme-icon-dark');
+    const iconLight = document.getElementById('theme-icon-light');
+
+    function applyTheme(isDark) {
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        iconDark.classList.remove('hidden');
+        iconLight.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        iconDark.classList.add('hidden');
+        iconLight.classList.remove('hidden');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+    applyTheme(initialDark);
+
+    toggleBtn?.addEventListener('click', () => {
+      const isCurrentlyDark = document.documentElement.classList.contains('dark');
+      const newDark = !isCurrentlyDark;
+      localStorage.setItem('theme', newDark ? 'dark' : 'light');
+      applyTheme(newDark);
     });
 
-    // Dynamically fetch latest 6 posts from WordPress REST API
-    async function fetchLatestPosts() {
+    // Dynamic fetch from WordPress REST API (Fallback already exists in HTML)
+    async function updateBlogPosts() {
       try {
         const res = await fetch('https://sevenfriends.xtkx.site/wp-json/wp/v2/posts?per_page=6');
         if (!res.ok) return;
         const posts = await res.json();
         if (!Array.isArray(posts) || posts.length === 0) return;
 
-        const container = document.getElementById('posts-container');
-        if (!container) return;
+        const listEl = document.getElementById('posts-list');
+        if (!listEl) return;
 
-        container.innerHTML = posts.map(post => {
+        listEl.innerHTML = posts.map(post => {
           const date = new Date(post.date).toISOString().split('T')[0];
           const title = post.title?.rendered || 'Untitled';
           const link = post.link || '#';
-          // Strip HTML from excerpt
-          const tmp = document.createElement('div');
-          tmp.innerHTML = post.excerpt?.rendered || '';
-          const excerpt = tmp.textContent.trim().slice(0, 100) + '...';
 
           return `
-            <a href="${link}" target="_blank" rel="noopener noreferrer" 
-               class="glass-card rounded-xl p-5 flex flex-col justify-between hover:scale-[1.01] transition-transform">
-              <div>
-                <div class="text-xs font-mono text-cyan-400 mb-2">${date}</div>
-                <h4 class="text-base font-semibold text-white hover:text-cyan-400 transition-colors line-clamp-2 mb-2">
-                  ${title}
-                </h4>
-                <p class="text-xs text-gray-400 line-clamp-3 leading-relaxed">
-                  ${excerpt}
-                </p>
-              </div>
-              <div class="mt-4 text-xs font-mono text-cyan-400 flex items-center gap-1">阅读全文 ↗</div>
-            </a>
+            <div class="flex items-baseline justify-between py-1.5 group">
+              <a href="${link}" target="_blank" rel="noopener noreferrer" 
+                 class="font-sans text-sm text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 truncate pr-4 hover-underline">
+                ${title}
+              </a>
+              <span class="text-zinc-400 shrink-0 font-mono text-xs">${date}</span>
+            </div>
           `;
         }).join('');
-      } catch (err) {
-        console.warn('Using static blog fallback:', err);
+      } catch (e) {
+        // Silently preserve pre-rendered list on network failure
       }
     }
 
-    fetchLatestPosts();
+    updateBlogPosts();
   </script>
 </body>
 </html>
